@@ -1,0 +1,14 @@
+<%= erb :"template/head"%>
+<%= permissionNav %>
+    <main>
+	  <!--End of Slideshow-->
+      <h1>Welcome Order!</h1>
+       <form method="post" action="/filterByCity" >
+        <input type="radio" name="city" value="sheffield" id="city_sheffield"> Sheffield
+        <input type="radio" name="city" value="leeds" id="city_leeds"> Leeds
+        <input class="slideshow-button" type="submit" value="set city"/>
+      </form>
+       <%#= erb :"function/printTweets"%>
+    </main>
+
+<%= erb :"template/footer"%>

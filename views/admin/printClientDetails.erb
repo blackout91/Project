@@ -1,0 +1,74 @@
+<% if !params[:filter].nil? #used for initial case %>
+    <%= erb :"template/head" %>
+    <%= erb :"template/adminNav" %>
+ <% end %>
+<main>
+	  <!--End of Slideshow-->
+    <% if !params[:filter].nil? #used for initial case %>
+      <form method="post" action="/filterClients" >
+        <input type="radio" name="filter" value="all" id="CHANGE_CLIENT_ALL" <% if @filter == "all" %> checked <% end %> > All
+        <input type="radio" name="filter" value="user" id="CHANGE_CLIENT_USER" <% if @filter == "user" %> checked <% end %>> Users
+        <input type="radio" name="filter" value="employee" id="CHANGE_CLIENT_EMPLOYEE" <% if @filter == "employee" %> checked <% end %>> Employees
+        <input type="radio" name="filter" value="admin" id="CHANGE_CLIENT_ADMIN" <% if @filter == "admin" %> checked <% end %>> Admins
+        <input class="slideshow-button" type="submit" value="filter"/>
+      </form>
+    <% end %>
+<h1>Change <%=params[:filter] %> details</h1>
+    <% if @results.length == 0 %>
+        <p>No search results found!</p>
+    <% else %>
+        <br />
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Contact</th>
+                <th>Twitter</th>
+                <th>Permissions</th>
+            </tr>
+            <% @results.each do |record| %>
+                <tr>
+                        <td>
+                                <%=h record[1] %>
+                        </td>
+                        <td>
+                                <%=h record[2] %>
+                        </td>
+                        <td>
+                            Postcode: <%=h record[3] %><br>
+                            City: <%=h record[10] %>
+                        </td>
+                        <td>
+                                Email: <%=h record[4] %><br>
+                                Home phone: <%=h record[5] %><br>
+                                Mobile phone: <%=h record[6] %>
+                        </td>
+    
+                        <td>
+                                <%=h record[7] %>
+                        </td>
+                        <td>
+                            <%=h record[8] %>
+                        </td>
+                        <td>
+                            <form method="get" action = "/admin/changeUser">
+                                <input type="hidden" name="userID" value="<%=h record[0] %>"/>
+                                <input class="slideshow-button" type="submit" value="Update Details"/>
+                            </form>
+                        </td>
+                    <td>
+                        <form method="post" action="removeUser">
+                           <input type="hidden" name="ID" value="<%=h record[0] %>"/>
+                           <input type="hidden" name="permission" value="<%=h record[8] %>"/>
+                           <input class="slideshow-button" type="submit" value="Remove User"/>
+                       </form>
+                    </td>
+                </tr>
+            <% end %>
+        </table>
+    <% end %>
+    </main>
+<% if !params[:filter].nil? #used for initial case %>
+    <%=  erb :"template/footer" %>
+<%end%>

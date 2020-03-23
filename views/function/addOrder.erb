@@ -1,0 +1,13 @@
+<form id="input" method="post" action="/addOrder">
+    <br>
+    <p>Twitter Handle : <%=h session[:userHandle]%></p>
+    <input  type="hidden" name="twitterHandle" value=<%=h session[:userHandle]%> required>
+    Add offer:
+    <select id="applyOffer" name="applyOffer">
+        <% @offers.each do |record| %>
+            <option value="<%=record[0]%>"><%= record[1]%></option>
+        <% end %>
+    </select>
+    <br>
+    <button class="slideshow-button" name="submit"  type="submit">Add basket to Orders</button>
+</form>

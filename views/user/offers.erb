@@ -1,0 +1,7 @@
+<%= erb :"template/head"%>
+<%= erb :"template/userNav"%>
+    <main>
+      <h1>Special offers availible:</h1>
+        <p><%= @db.get_first_value('SELECT description FROM offers WHERE offerID = ?', [@db.get_first_value('SELECT offers FROM users WHERE userID = ?', [session[:userID]])])%></p>
+    </main>
+<%= erb :"template/footer"%>

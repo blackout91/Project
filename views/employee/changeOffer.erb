@@ -1,0 +1,63 @@
+<%= erb :"template/head"%>
+<%= permissionNav %>
+    <main>
+	    <!--End of Slideshow-->
+        <h1>Change Offer!</h1>
+        <p>This page is for seting an offer for user.
+           The offer does not apply until the exact same offer is
+           chosen when adding an order. For example, if 50% offer is set
+           for user, the discount will apply when employee adds an order
+           and sets an offer in the addOrder page.
+       </p>
+            <% if @results.length == 0 %>
+                <p>No search results found!</p>
+            <% else %>
+                <br />
+      
+                <table>
+                    
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Twitter</th>
+                        <th>City</th>
+                        <th>Offers</th>
+                        <th>Update</th>                  
+                    </tr>
+                    <% @results.each do |record| %>
+                    <tr>
+                        <form method="post" action="/addOffer"> 
+                        <td>
+                            <%=h record[1] %>
+                        </td>
+                        <td>
+                            <%=h record[2] %>
+                        </td>
+                        <td>
+                            <%=h record[7] %>
+                        </td>
+                        <td>
+                            <%=h record[10] %>
+                        </td>
+                        <td>
+                            <select id="selectOffer" name = "selectOffer">
+                                <option value="<%=h record[11] %>"><%=h @db.get_first_value("SELECT description FROM offers WHERE offerID = ?", [record[11]]) %></option>
+                                 <% @offers.each do |offer| %>
+                                    <option value="<%=h offer[0] %>"> <%=h offer[1]%> </option>
+                                <% end %>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="hidden" name="userID" value="<%=h record[0] %>"/>
+                            <input class="slideshow-button" type="submit" value="Update Offer"/>                        
+                        </td>
+                        </form>
+                    </tr>
+                <% end %>
+            </table>
+            
+        
+    <% end %>
+    </main>
+
+<%= erb :"template/footer"%>

@@ -1,0 +1,39 @@
+<%= erb :"template/head"%>
+<%= erb :"template/Nav"%>
+    <main>
+        <h1>Welcome to The Pied Piper!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<!--Slideshow based on https://www.w3schools.com/w3css/w3css_slideshow.asp -->
+	  <div class="homeslideshow">
+      <!--Sample images to be changed to images given by client -->
+	  <img class="center SlideImages" src="https://cdn-eu-ec.yottaa.net/55b635db0b5344273c002031/d1fd69005c1501336a81123dfe2baf36.yottaa.net/v~22.3a7/6655-3-large.jpg?yocs=H_&yoloc=eu" alt="" style="width:80%">
+      <img class="center SlideImages" src="https://www.simplyrecipes.com/wp-content/uploads/2017/06/american-flag-pie-horiz-a2-1200.jpg" alt="" style="width:80%">
+      <img class="center SlideImages" src="https://www.inspiredtaste.net/wp-content/uploads/2016/06/Blueberry-Pie-Recipe-2-1200.jpg" alt="" style="width:80%">
+      <button class="slideshow-button" onclick="moveImage(-1)" id="PREVIOUS_IMAGE_HOMEPAGE">Previous Image</button>
+      <button class="slideshow-button" onclick="moveImage(1)" id="NEXT_IMAGE_HOMEPAGE">Next Image</button>
+    </div>
+      <script src = "./javascript/slideshow.js"></script>
+	  <!--End of Slideshow-->
+    <h1>Menu!</h1>
+    <% if session[:city].nil? || session[:city] == ""
+            currentCity = "sheffield"
+        else 
+            currentCity = session[:city] %>
+    <%end%>
+    <h1>City: <%= currentCity.capitalize %></h1>
+
+       
+         <form method="post" action="/changeView">
+          <button class="city-button" type="submit" name="city" value="sheffield" id="HOMEPAGE_SHEF">Sheffield</button>
+          <button class="city-button" type="submit" name="city" value="leeds" id="HOMEPAGE_LEEDS">Leeds</button>
+        </form>
+        
+
+        <%= erb :"function/printMenu"%>        
+        
+    </main>
+
+<%= erb :"template/footer"%>

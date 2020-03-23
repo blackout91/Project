@@ -1,0 +1,53 @@
+<%= erb :"template/head"%>
+<%= erb :"template/adminNav"%>
+     <main>
+          <script>
+    window.onload = function () {
+
+        var chart1 = new CanvasJS.Chart("chartContainer1", {
+            animationEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title:{
+                text: "Analytics of orders (each month) "
+            },
+            axisY: {
+                title: "Number of orders"
+            },
+            data: [{        
+                type: "column",  
+
+                dataPoints: [      
+                   <% (0..11).each do |i| %>
+                    { y: <%= @values1[i] %>, label: "<%= @month[i] %>"},
+                <% end %>
+                ]
+            }]
+        });
+        var chart2 = new CanvasJS.Chart("chartContainer2",{
+            animationEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title :{ text: "Analytics of tweets with @G31ThePiedPiper" },
+            data: [{
+            type: "column",
+            dataPoints : [
+                <% (0..11).each do |i| %>
+                     { y: <%= @values2[i] %>, label: "<%= @month[i] %>"},
+               <% end %>
+            ]
+            }]
+        });
+    chart1.render();
+    chart2.render();
+    }
+</script>
+	  <!--End of Slideshow-->
+      <h1>Analytics!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div id="chartContainer1"style="height: 370px; width: 100%;"></div>
+        <div id="chartContainer2"style="height: 370px; width: 100%;"></div>
+         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </main>
+<%= erb :"template/footer"%>

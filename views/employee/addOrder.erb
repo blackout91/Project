@@ -1,0 +1,18 @@
+<%= erb :"template/head"%>
+<%= permissionNav %>
+    <main>
+         <main>
+	  <!--End of Slideshow-->
+      <h1>Welcome <%=session[:firstname]%>!</h1>
+       <h1>Add orders to database</h1>
+       <%= erb :"function/addBasket"%>
+    <!-- Printing orders table -->
+    <%= erb :"function/printBasket"%>
+    <%= erb :"function/addOrder"%>
+    <br>
+    <p> <%= session[:userHandle] %> (ID:<%=h @db.get_first_value('SELECT userID FROM users WHERE handle = ?', [session[:userHandle]]) %>): <%= session[:tweetText] %> </p>
+    <br>
+    <%= erb :"function/printOrders"%>
+    
+    </main>
+<%= erb :"template/footer"%>

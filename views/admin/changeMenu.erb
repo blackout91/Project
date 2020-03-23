@@ -1,0 +1,61 @@
+<%= erb :"template/head"%>
+<%= erb :"template/adminNav"%>
+<main>
+  <!--End of Slideshow-->
+  <h1>Change menu item details</h1>
+<% if @results.length == 0 %>
+    <p>No search results found!</p>
+<% else %>
+    <br />
+     <table>
+             <% @results.each do |record| %>
+            <form method="post" action = "/admin/changeMenu">
+            <tr>
+                <th>Detail</th>
+                <th>Current</th>
+                <th>New</th>
+            </tr>
+            <tr>
+                <td>Item</td>
+                <td><%=h record[1] %></td>
+                <td><input id ="item" type="text" name="item" maxlength="40"  value="<%=h record[1] %>"></td>
+            </tr>
+            <tr>
+                <td>Size</td>
+                <td><%=h record[2] %></td>
+                <td>
+                    <select id ="size" type="text" name="size">
+                      <option value="<%=h record[2] %>"><%=h record[2] %></option>
+                      <option value="Small">Small</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Large">Large</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><%=h record[3] %></td>
+                <td><input id ="price" type="text" name="price" maxlength="40"  value="<%=h record[3] %>"></td>
+            </tr>  
+            <tr>
+                <td>City</td>
+                <td><%=h record[4] %></td>
+                <td>
+                    <select id="city" name = "city">
+                        <option value="<%=h record[4] %>"><%= record[4] %></option>
+                        <option value="<%=h 'leeds' %>">leeds</option>
+                        <option value="<%=h 'sheffield' %>">sheffield</option>
+                    </select> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="hidden" name="itemID" value="<%=h record[0] %>"/>
+                    <input class="slideshow-button" type="submit" value="Update Details"/>
+                </td>
+            </tr>
+         </form>
+        <% end %>
+    </table>
+<% end %>
+<%= erb :"template/footer"%>

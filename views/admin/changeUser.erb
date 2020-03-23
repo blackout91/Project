@@ -1,0 +1,94 @@
+
+<%= erb :"template/head"%>
+<%= permissionNav %>
+    <main>
+	  <!--End of Slideshow-->
+      <h1>Change customer details</h1>
+
+        <% if @results.length == 0 %>
+            <p>No search retds found!</p>
+        <% else %>
+        <br />
+        <form method="post" action = "/admin/updateDetails">
+        <table>
+             <% @results.each do |record| %>
+            <tr>
+                <th>Detail</th>
+                <th>Current</th>
+                <th>New</th>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td><%=h record[1] %></td>
+                <td><input id ="firstname" type="text" name="firstname" maxlength="40"  value="<%=h record[1] %>"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><%=h record[2] %></td>
+                <td><input id ="lastname" type="text" name="lastname" maxlength="40"  value="<%=h record[2] %>"></td>
+            </tr>
+            <tr>
+                <td>Postcode</td>
+                <td><%=h record[3] %></td>
+                <td><input id ="address" type="text" name="address" maxlength="40"  value="<%=h record[3] %>"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><%=h record[4] %></td>
+                <td><input id ="email" type="email" name="email" maxlength="40" value="<%=h record[4] %>"></td>
+            </tr>
+            <tr>
+                <td>Home phone</td>
+                <td><%=h record[5] %></td>
+                <td><input id ="homephone" type="number" name="homephone" maxlength="40" value="<%=h record[5] %>"></td>
+            </tr>
+            <tr>
+                <td>Mobile phone</td>
+                <td><%=h record[6] %></td>
+                <td><input id ="mobphone" type="number" name="mobphone" maxlength="40" value="<%=h record[6] %>"></td>
+            </tr>
+            <tr>
+                <td>Twitter</td>
+                <td><%=h record[7] %></td>
+                <td><input id ="handle" type="text" name="handle" maxlength="40"  value="<%=h record[7] %>"></td>
+            </tr>
+             <tr>
+                <td>Password</td>
+                <td>*****</td>
+                <td><input id ="password" type="password" name="password" maxlength="40"  value="<%=h record[9] %>"></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td><%=h record[10] %></td>
+                <td>
+                    <select id="city" name = "city">
+                        <option value="<%=h record[10] %>"><%= record[10] %></option>
+                        <option value="<%=h 'leeds' %>">leeds</option>
+                        <option value="<%=h 'sheffield' %>">sheffield</option>
+                    </select> 
+                </td>
+            </tr>
+            <tr>
+                <td>Permissions</td>
+                <td><%=h record[8] %></td>
+                <td>
+                    <select id="permission" name = "permission">
+                        <option value="<%=h record[8] %>"><%= record[8] %></option>
+                        <option value="<%=h 'admin' %>">admin</option>
+                        <option value="<%=h 'employee' %>">employee</option>
+                        <option value="<%=h 'user' %>">user</option>
+                    </select>                            
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="hidden" name="userID" value="<%=h record[0] %>"/>
+                    <input class="slideshow-button" type="submit" value="Update Details"/>
+                </td>
+            </tr>
+            <%end%>
+        </table>
+        <%end%>
+        </form>
+      </main>
+<%= erb :"template/footer"%>

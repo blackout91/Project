@@ -1,0 +1,11 @@
+<%= erb :"template/head"%>
+<%= permissionNav %>
+    <main>
+	  <!--End of Slideshow-->
+      <h1>History of Orders</h1>
+      <p> Displays completed orders (unless they are removed)</p>
+        <h3>Orders</h3>
+        <%= erb :"function/printHistory"%>
+    </main>
+
+<%= erb :"template/footer"%>

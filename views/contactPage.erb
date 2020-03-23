@@ -1,0 +1,54 @@
+<%= erb :"template/head"%>
+<%= erb :"template/Nav"%>
+
+   <main>
+      <h2 class="pgtitle">Contact Page</h2>
+      <p>Description for the business
+      </p>
+	  <form name="myform" action="http://www.dcs.shef.ac.uk/cgi-intranet/public/FormMail.pl" method="get">
+
+      <!-- the following line must be included as it is required by the cgi script -->
+      <input type="hidden" name="recipient" value="com1001g31@outlook.com">
+
+	  <!-- full details at: http://www.scriptarchive.com/formmail.html -->
+      <input type="hidden" name="subject" value="Test Form">
+
+	  <p>
+        <label for="from">Your name:*</label>
+		<br>
+		<input type="text" name="from" id="from"
+               maxlength="40" size="20" placeholder="type your name..."  required>
+      </p>
+
+	  <p>
+        <label for="inputEmail">Your e-mail:*</label>
+		<br>
+        <input type="email" name="inputEmail" id="inputEmail" placeholder="type your email..."
+               maxlength="40" size="20" required>
+      </p>
+      <textarea name="comments" rows="5" cols="50" placeholder="Add your comments here..."></textarea>
+      <br>
+      <!-- must have one button of type 'submit' in order to send the form to the cgi script -->
+      <p>
+        <input type="submit" name="submit" id="submit" value="Submit">
+        <input type="reset" id="reset">
+      </p>
+
+  </form>
+      <p>Or, alternatively, send us an email. Here are our contact details:
+      </p>
+	  <table id="aboutustable">
+        <tr><td>Student 1</td><td>Apostolos Bantis</td></tr>
+	    <tr><td>Email</td><td>abantis1@sheffield.ac.uk</td></tr>
+	    <tr><td>Telephone</td><td>0123456789</td></tr>
+        <tr><td>Address</td><td>Sheffield University</td></tr>
+	    <tr><td>Postcode</td><td>S1 4BU</td></tr>
+        <tr><td>Student 2</td><td>Matthew Prestwich</td></tr>
+        <tr><td>Email</td><td>msprestwich1@sheffield.ac.uk</td></tr>
+        <tr><td>Telephone</td><td>0123456789</td></tr>
+        <tr><td>Address</td><td>Sheffield University</td></tr>
+        <tr><td>Postcode</td><td>S1 4BU</td></tr>
+      </table>
+    </main>
+
+<%= erb :"template/footer"%>

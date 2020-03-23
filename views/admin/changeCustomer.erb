@@ -1,0 +1,17 @@
+<%= erb :"template/head"%>
+<%= erb :"template/adminNav"%>
+    <main>
+	  <!--End of Slideshow-->
+
+      <form method="post" action="/filterClients" >
+        <input type="radio" name="filter" value="all" id="ALL_CUSTOMER_FILTER"  checked> All
+        <input type="radio" name="filter" value="user" id="USER_CUSTOMER_FILTER" > Users
+        <input type="radio" name="filter" value="employee" id="EMPLOYEE_CUSTOMER_FILTER"  > Employees
+        <input type="radio" name="filter" value="admin" id="ADMIN_CUSTOMER_FILTER" > Admins
+        <input class="slideshow-button" type="submit" value="filter"/>
+
+      </form>
+        <%= erb :"admin/printClientDetails" %>
+    </main>
+
+<%= erb :"template/footer"%>

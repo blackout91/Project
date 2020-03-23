@@ -1,0 +1,288 @@
+/*Authored by: Apostolos Bantis 2018*/
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~general tags~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+body {
+  background-color: white;
+  color: black;
+  font-family: Arial, sans-serif;
+  line-height: 1.5em;
+  text-align: justify;
+  min-width: 320px;
+}
+
+body, html {
+    height: 100%;
+}
+
+
+h1, h2 {
+  color: black;
+}
+
+h1 {
+  font-size: 1em;
+}
+
+h2 {
+  font-size: 1em;
+}
+
+p {
+   margin-bottom: 0.5em;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~wrapper~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+#wrapper {
+  background-color: white;
+  width: auto;
+  margin: 0px auto;
+  border: none;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~header~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+header {
+  margin: 0;
+  padding: 0 5%;
+  background-color: pink;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: Arial, serif;
+  font-size: 1.3em;
+  line-height: 2em;
+  text-align: center;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~navigation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* Dropdown Button */
+/*--Clickdown drop menu css based on https://www.w3schools.com/howto/howto_js_dropdown.asp */
+.dropbtn {
+    background-color: rgb(255,100,134);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: rgb(112,128,144);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+	/*position:relative is needed for when we want the dropdown content to be placed right below the dropdown button */
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(255,100,134);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white;
+	font-size: 14px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: rgb(112,128,144)}
+
+/* Show the dropdown menu ( we use JS to add this class to the .dropdown-content container*/
+/*when the user clicks on the dropdown button) */
+.show {display:block;}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~main content~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+main {
+  padding: 10px 5%;
+  text-align: center;
+}
+
+main *.highlight {
+  font-weight: bolder;
+}
+
+main article {
+  margin: 20px 0;
+}
+
+*.pgtitle {
+   	text-align: center;
+	font-size: 1.2em;
+}
+
+main figure img {
+	max-width: 100%;
+    height: auto;
+    margin: auto;
+	border: 0;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~page specific styles~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*homepage slideshow buttons*/
+.slideshow-button {
+	background-color: rgb(255,100,134);
+    border: none;
+    color: white;
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	border-radius: 4px;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+   /*change slideshow button colour when cursor is hovering above it*/
+.slideshow-button:hover {
+	background-color: rgb(112,128,144);
+}
+/*Contact form style*/
+input[type=text] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid rgb(255,100,134);
+    border-radius: 4px;
+}
+
+input[type=email], textarea {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	border: 2px solid rgb(255,100,134);
+    border-radius: 4px;
+
+}
+
+input[type=password], textarea {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	border: 2px solid rgb(255,100,134);
+    border-radius: 4px;
+
+}
+
+input[type=tel], textarea {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	border: 2px solid rgb(255,100,134);
+    border-radius: 4px;
+
+}
+
+/*form buttons style*/
+#submit, #reset {
+	background-color: rgb(255,100,134);
+    border: none;
+    color: white;
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	border-radius: 4px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#submit:hover {
+	background-color: rgb(112,128,144);
+}
+
+#reset:hover {
+	background-color: rgb(112,128,144);
+}
+/*contact page table*/
+
+table {
+    border-collapse: collapse;
+	 width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+ tr:nth-child(even){background-color: #f2f2f2}
+
+ tr:hover{background-color:#DCDCDC}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~footer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+footer {
+  clear: both;
+  font-size: 0.9em;
+  text-align: center;
+  border-top: 1px solid black;
+  padding: 3px 5%;
+  background-color: white;
+  color: black;
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*~~~media queries for desktop~~~~~~~~~~~~~~~~~~~~~*/
+@media screen and (min-width: 700px) {
+	/*make main content take up to 80% width of the page when you get above 700px*/
+	#wrapper {
+    width: 80%;
+     }
+}
+
+@media screen and (min-width: 900px) {
+  /*have the page content take up to 80% of the screen in desktop, in order for text to be more readable*/
+  header h1 {
+    font-size: 2.5em;
+  }
+  /*split text in busy pages in two columns*/
+  .content {
+    width: 47.5%;
+	padding-right:2.5%;
+    float: left;
+  }
+
+  main aside {
+    width: 47.5%;
+	padding-left: 2.5%;
+    float: right;
+  }
+
+}
+/* ~~~end~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

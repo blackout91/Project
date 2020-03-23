@@ -1,0 +1,25 @@
+<% if @basket.length == 0 %>
+    <p>No item in basket!</p>
+    <% else %>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Size</th>
+            <th>Price</th>
+        </tr>
+        <% @basket.each do |record| %>
+            <tr>
+                <td><%=h @db.get_first_value('SELECT item FROM menu WHERE itemID = ?', [record[1]]) %></td>
+                <td><%=h @db.get_first_value('SELECT size FROM menu WHERE itemID = ?', [record[1]]) %></td>
+                <td><%=h  '%.2f' % record[2] %></td>
+                
+                <td>
+                    <form method="post" action="removeBasket">
+                        <input type="hidden" name="basketIndex" value="<%=h record[0] %>"/>
+                        <input class="slideshow-button" type="submit" value="Remove Item"/>
+                    </form>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+<% end %>

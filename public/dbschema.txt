@@ -1,0 +1,52 @@
+CREATE TABLE users(
+userID INTEGER NOT NULL PRIMARY KEY,
+firstname TEXT,
+lastname TEXT,
+address TEXT,
+email TEXT,
+homephone INTEGER,
+mobphone INTEGER,
+handle TEXT,
+permission TEXT,
+password TEXT,
+city TEXT,
+offers INTEGER
+);
+
+CREATE TABLE menu(
+itemID INTEGER NOT NULL PRIMARY KEY,
+item TEXT,
+size TEXT,
+price FLOAT,
+city TEXT
+);
+
+CREATE TABLE orders(
+orderID INTEGER NOT NULL REFERENCES orderdetails(orderID),
+time INTEGER,
+userID INTEGER NOT NULL REFERENCES users(userID),
+totalprice INTEGER,
+completion TEXT,
+month INTEGER,
+city TEXT
+);
+
+CREATE TABLE orderdetails(
+orderID INTEGER NOT NULL,
+itemID INTEGER NOT NULL REFERENCES menu(itemID)
+);
+
+CREATE TABLE basket(
+basketIndex INTEGER NOT NULL,
+itemID INTEGER NOT NULL REFERENCES menu(itemID),
+price INTEGER NOT NULL REFERENCES menu(price)
+);
+
+CREATE TABLE offers(
+offerID INTEGER NOT NULL,
+description TEXT 
+);
+
+INSERT INTO users VALUES (0, "admin", "admin", "admin", "admin@admin.com", 1234, 1234, "admin", "admin", "nimda", "sheffield");
+INSERT INTO users VALUES (1, "employee", "employee", "employee", "employee@employee.com", 1234, 1234, "employee", "employee", "eeyolpme", "sheffield");
+INSERT INTO users VALUES (2, "user", "user", "user", "user@user.com", 1234, 1234, "user", "user", "resu", "sheffield");

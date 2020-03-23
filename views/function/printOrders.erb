@@ -1,0 +1,45 @@
+<% if @results.length == 0 %>
+    <p>No search results found!</p>
+    <% else %>
+    <table>
+        <tr>
+            <th>Order ID</th>
+            <th>Time</th>
+            <th>User ID</th>
+            <th>Order Details</th>
+            <th>Total Price</th>
+            <th>Status</th>
+        </tr>
+        <% @results.each do |record| %>
+            <tr>
+                <td><%=h record[0] %></td>
+                <td><%=h record[1] %></td>
+                <td><%=h @db.get_first_value('SELECT handle FROM users WHERE userID = ?' ,record[2]) %></td>
+                <td>
+                   <% printDetails(record[0])%>
+                   <p><%=@detailString%></p>
+                </td>
+                <td><%=h  '%.2f' % record[3] %></td>
+                <td><%=h record[4] %></td>
+                 <td>
+                    <form onsubmit= "return confirm('Do you wish to update status?');" method="post" action = "/updateStatus">
+                        <select id="status" name = "status">
+                            <option value="<%=h record[4] %>"><%=h record[4] %></option>
+                            <option value="<%=h 'pending' %>"> pending </option>
+                            <option value="<%=h 'in progress' %>">in progress </option>
+                            <option value="<%=h 'completed' %>"> completed </option>
+                        </select>
+                        <input type="hidden" name="orderID" value="<%=h record[0] %>"/>
+                        <input type="submit" value="Update">
+                    </form>
+                </td>
+                <td> 
+                    <form method="post" action="/removeOrder">
+                        <input type="hidden" name="ID" value="<%=h record[0] %>"/>
+                        <input class="slideshow-button" type="submit" value="Remove" />
+                    </form>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+<% end %>

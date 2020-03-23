@@ -1,0 +1,17 @@
+<%= erb :"template/head"%>
+<%
+if session[:permission] == "admin" 
+    erb :"template/adminNav" 
+elsif session[:permission] == "employee" 
+    erb :"template/employeeNav" 
+end
+%>
+    <main>
+	  <!--End of Slideshow-->
+      <h1>Welcome <%=session[:firstname]%>!</h1>
+       <h1>Add orders to database</h1>
+        <%= erb :"function/addOrder"%>
+    <!-- Printing orders table -->
+    <%= erb :"function/printOrders"%>
+    </main>
+<%= erb :"template/footer"%>

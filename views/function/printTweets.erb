@@ -1,0 +1,64 @@
+<%= erb :"template/head" %>
+ <%= permissionNav %>
+
+<h1>Tweets from <%= params[:city] %> users </h1>
+<form method="post" action="/filterByCity" >
+        <input type="radio" name="city" value="sheffield" id="filterByCity_Sheffield" checked> Sheffield
+        <input type="radio" name="city" value="leeds" id="filterByCity_Leeds" > Leeds
+        <input type="submit" value="set city"/>
+</form>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Text</th>
+        <th>Reply Message</th>
+    </tr>
+
+        <% @filteredTweets.each do |tweet| %>
+                <% if tweetChecked(tweet.id) then
+                    next
+                   end
+                  %>
+
+                <% if tweet.truncated? && tweet.attrs[:extended_tweet]
+                          tweet_text = tweet.attrs[:extended_tweet][:full_text]
+                    else
+                          tweet_text = tweet.attrs[:text]|| tweet.attrs[:full_text]
+                   end
+                %>
+              <tr>
+                <td>
+                  <a href="<%= tweet.uri %>">
+                    <%= tweet.id %>
+                  </a>
+                </td>
+                <td>
+                  <a href="<%= tweet.user.uri %>">
+                    <%= tweet.user.screen_name %>
+                  </a>
+                </td>
+                <td>
+                 <p> <%= tweet_text %></p>
+                </td>
+                <td>
+                   <form onsubmit= "return confirm('Do you wish to reply?');"  method = "post" action = "/reply">
+                       <input type="text" name="message" maxlength="144" size="20" placeholder="Type your messages..." value="<%= params[:message] %>">
+                       <input type="hidden" name="name" value="<%= tweet.user.screen_name %>">
+                       <input type="hidden" name="id" value="<%= tweet.id %>">
+                       <input type="submit" name="submit" value="Reply" />
+                   </form>
+                </td>
+                <td>
+                 <form method="get" action="/addOrder">
+                    <input type="hidden" name="ID" value="<%=h tweet.id %>"/>
+                    <input type="hidden" name="user" value="<%=h tweet.user.screen_name %>"/>
+                    <input class="slideshow-button" type="submit" value="Add" />
+                 </form>
+               </td>
+              </tr>
+
+        <% end %>
+</table>
+
+<%=  erb :"template/footer" %>
